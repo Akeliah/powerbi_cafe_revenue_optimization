@@ -1,0 +1,34 @@
+// ==========================================
+// 1. BASE MEASURES
+// ==========================================
+
+Revenue = 
+SUM('campus_cafe_project'[Total Sales])
+
+Total Profit = 
+SUM('campus_cafe_project'[Profit])
+
+Total Orders = 
+DISTINCTCOUNT('campus_cafe_project'[Order_ID])
+
+Total Quantity = 
+SUM('campus_cafe_project'[Quantity])
+
+
+// ==========================================
+// 2. PERFORMANCE & MARGIN RATIOS
+// ==========================================
+
+Profit Margin % = 
+DIVIDE(
+    [Total Profit], 
+    [Revenue], 
+    BLANK()
+)
+
+App Share % = 
+DIVIDE(
+    CALCULATE([Revenue], 'campus_cafe_project'[Channel] = "App"),
+    [Revenue],
+    BLANK()
+)
